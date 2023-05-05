@@ -1,0 +1,132 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div style="border-radius : 2px;" class="container bg-light shadow-lg">
+
+                    <div class="row mt-4">
+
+                        <p class="text-muted" style="font-size: 12px;"><span style="color: red;">*</span>Required Field</p>
+
+                        <form [formGroup]="editAnnouncement" (ngSubmit)="onEdit()">
+
+                            <div class="container">
+
+                                <div class="row mt-2">
+
+                                    <div class="col-md-6">
+                                        
+                                        <div class="input-group">
+
+                                            <span class="input-group-text">Id <span style="color: red;">*</span> </span>
+
+                                            <input type="text" class="form-control" formControlName="id" [readOnly]="true">
+
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="input-group">
+
+                                            <span class="input-group-text">Title <span style="color: red;">*</span> </span>
+
+                                            <input type="text" class="form-control"  formControlName="title">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="container">
+
+                                <div class="row mt-2">
+
+                                    <div class="col-md-6">
+
+                                        <div class="input-group">
+
+                                            <span class="input-group-text">Announcement <span style="color : red">*</span></span>
+
+                                            <input type="text" class="form-control" formControlName="content">
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="input-group">
+
+                                            <span class="input-group-text">Start Date <span style="color: red;">*</span></span>
+
+                                            <input type="date" class="form-control" [min]="minDate" formControlName="strtDate">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="container">
+
+                                <div class="row mt-2">
+
+                                    <div class="col-md-3"></div>
+
+                                    <div class="col-md-6">
+
+                                        <div class="input-group">
+
+                                            <span class="input-group-text">End Date <span style="color: red;">*</span> </span>
+
+                                            <input type="date" class="form-control" [min]="minDate" formControlName="edDate">
+
+                                            <span class="input-group" style="font-size: 12px; color : red;" *ngIf="edDate?.dirty && editAnnouncement.hasError('dateValidate')">Start date must be less than End date</span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3"></div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-2">
+
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4 m-auto" style="width: auto;"><button type="submit" class="btn btn-primary mt-2">Edit</button></div>
+                                <div class="col-md-4"></div>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+                
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+
+        </div>
+
+    </div>
+    
+</div>
+
+<div [ngStyle]="{'display': signal}" class="adjust">
+    <div class="alert success">
+        <strong>Updated!</strong>
+    </div>
+</div>

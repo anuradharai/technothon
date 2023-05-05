@@ -1,0 +1,181 @@
+<app-navbar></app-navbar>
+
+<ng-confirm></ng-confirm>
+
+<div class="container">
+
+    <div class="row mt-4">
+
+      <div class="container p-4">
+
+        <div class="row">
+
+          <div class="col-md-2">
+            <h6 class="text-muted">Select Country : </h6>
+          </div>
+          <div class="col-md-4">
+            <div class="col-md-4">
+              <select #option (change)="onSelect(option.value)">
+                <option value="India">India</option>
+                <option value="United States">United State</option>
+                <option value="China">China</option>
+                <option value="United Kingdom">United Kingdom</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6"></div>
+        </div>
+
+        <div class="row mt-4">
+
+          <table class="table table-striped table-hover shadow-lg">
+            <thead>
+              <!-- 3rd Party API -->
+              <!-- <tr>
+                <th scope="col">University</th>
+                <th scope="col">Country</th>
+                <th scope="col">Website</th>
+                <th><input type="text"[(ngModel)]='filterBy' placeholder="Search...." (keyup)="filter()"></th>
+              </tr> -->
+
+              <!-- <tr>
+                <th scope="col">University</th>
+                <th scope="col">City</th>
+                <th scope="col">Address</th>
+                <th scope="col">State</th>
+                <th scope="col">Country</th>
+                <th><input type="text"[(ngModel)]='filterBy' placeholder="Search...." (keyup)="filter()"></th>
+              </tr> -->
+
+              <tr>
+
+
+                <!-- Use for sorting by alphabetically order -->
+                <!-- <th scope="col">University <select #sort (change)="(onSort(sort.value))">
+                  <option class="text-muted" value="none" selected disabled hidden>Sort</option>
+                  <option value="A">A-Z</option>
+                  <option value="Z">Z-A</option>
+                </select></th> -->
+
+
+                <th scope="col">University</th>
+                <th scope="col">CountryCode</th>
+                <th scope="col">Country</th>
+                <th scope="col">Web Site</th>
+                <th></th>
+
+
+                <!-- Use for seraching in the table by name -->
+                <!-- <th><input type="text"[(ngModel)]='filterBy' placeholder="Search...." (input)="filter(filterBy)"></th> -->
+
+                
+              </tr>
+
+            </thead>
+            <tbody>
+              <!-- <tr *ngFor="let user of filteredUsers | paginate: { itemsPerPage: 6, currentPage: page }">
+                
+                <td>{{ user['name']}}</td>
+                <td>{{ user['country']}}</td>
+                <td><a href="{{user['web_pages']}}" target="_blank" >Web Link</a></td>
+                <td><button type="button" class="btn btn-primary" (click)="openPopup(user)">View More</button></td>
+
+                <div
+                class="modal"
+                tabindex="-1"
+                role="dialog"
+                [ngStyle]="{'display':display}">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Details</h4>
+                  </div>
+                  <div class="modal-body">
+
+                    <h6>University : {{ University }}</h6>
+                    <h6>Country : {{ Country }}</h6>
+                    <h6>Alpha_two_code : {{ Alpha_two_code }}</h6>
+                    <h6>Domain : {{ Domains }} </h6>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger"
+                        (click)="closePopup()">
+                    Close
+                    </button>
+                  </div>
+                  </div>
+                </div>
+                </div>
+
+              </tr> -->
+
+              <!-- <tr *ngFor="let user of filteredUsers | paginate: { itemsPerPage: 6, currentPage: page }">
+
+                <td>{{ user['name']}}</td>
+                <td>{{ user['city']}}</td>
+                <td>{{ user['address']}}</td>
+                <td>{{ user['state']}}</td>
+                <td>{{ user['country']}}</td>
+                <td></td>
+              </tr> -->
+
+              <tr *ngFor="let university of filteredUsers | paginate: { itemsPerPage: item , currentPage: page }">
+
+                <!-- {{ university }} -->
+
+                <td>{{ university['University'] }}</td>
+                <td>{{ university['CountryCode'] }}</td>
+                <td>{{ university['Country'] }}</td>
+                <td>{{ university['Website'] }}</td>
+                <td><button class="btn btn-primary" color="primary"><a style="text-decoration: none; color: white;" routerLink="/edit-university/{{ university['id'] }}"><fa-icon [icon]="faEdit"></fa-icon></a></button></td>
+                <td><button class="btn btn-danger" color="danger" (click)="onDelete(university['id'])"><fa-icon [icon]="faTrash"></fa-icon></button></td>
+                <td></td>
+
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="container-fluid">
+
+            <div class="row">
+
+              <div class="d-flex justify-content-center col-lg-10">
+
+                <!-- <pagination-controls
+    
+                id="foo"
+                (pageChange)="onTableDataChange($event)"
+                previousLabel="Previous"
+                nextLabel="Next"
+                >
+    
+                </pagination-controls> -->
+    
+                <span><input type="number" [(ngModel)]='item'></span><pagination-controls (pageChange)="page = $event"></pagination-controls>
+    
+              </div>
+    
+              <div class="col-lg-2">
+    
+                <button style="border-radius: 50%; margin-left: 80%;" class="btn btn-primary" color="primary"><a style="text-decoration: none; color: white;" routerLink="/addUniversity">+</a></button>
+
+              </div>
+
+            </div>
+            
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+</div>
+
+<div [ngStyle]="{'display': signal}" class="adjust">
+  <div class="alert danger">
+      <strong>University Deleted!</strong>
+  </div>
+</div>

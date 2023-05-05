@@ -1,0 +1,230 @@
+<app-navbar></app-navbar>
+
+<ng-confirm></ng-confirm>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div style="border-radius : 2px;" class="container bg-light shadow-lg">
+
+                    <div class="row mt-4">
+
+                        <p class="text-muted" style="font-size: 12px;"><span style="color: red;">*</span>Required Field</p>
+
+                            <form [formGroup]="addAnnouncement" (ngSubmit)="onAdd()">
+
+                                <div class="container">
+    
+                                    <div class="row mt-2">
+    
+                                        <div class="col-md-6">
+                                            
+                                            <div class="input-group">
+    
+                                                <span class="input-group-text">Id <span style="color: red;">*</span> </span>
+    
+                                                <input type="text" class="form-control" placeholder="1234" formControlName="id">
+    
+                                                <span class="input-group" style="font-size: 12px; color : red;" *ngIf="id?.dirty && addAnnouncement.hasError('idMatch')">Id is already used</span>
+    
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-6">
+    
+                                            <div class="input-group">
+    
+                                                <span class="input-group-text">Title <span style="color: red;">*</span> </span>
+    
+                                                <input type="text" class="form-control" placeholder="title" formControlName="title">
+    
+                                            </div>
+    
+                                        </div>
+    
+                                    </div>
+    
+                                </div>
+    
+                                <div class="container">
+    
+                                    <div class="row mt-2">
+    
+                                        <div class="col-md-6">
+    
+                                            <div class="input-group">
+    
+                                                <span class="input-group-text">Announcement <span style="color : red">*</span></span>
+    
+                                                <input type="text" class="form-control" placeholder="Content" formControlName="content">
+    
+                                            </div>
+    
+                                        </div>
+                                        <div class="col-md-6">
+    
+                                            <div class="input-group">
+    
+                                                <span class="input-group-text">Start Date <span style="color: red;">*</span></span>
+    
+                                                <input type="date" class="form-control" [min]="minDate" formControlName="strtDate">
+    
+                                            </div>
+    
+                                        </div>
+    
+                                    </div>
+    
+                                </div>
+    
+                                <div class="container">
+    
+                                    <div class="row mt-2">
+    
+                                        <div class="col-md-3"></div>
+    
+                                        <div class="col-md-6">
+    
+                                            <div class="input-group">
+    
+                                                <span class="input-group-text">End Date <span style="color: red;">*</span> </span>
+    
+                                                <input type="date" class="form-control" [min]="minDate" formControlName="edDate">
+    
+                                                <span class="input-group" style="font-size: 12px; color : red;" *ngIf="edDate?.dirty && addAnnouncement.hasError('dateValidate')">Start date must be less than End date</span>
+    
+    
+                                            </div>
+    
+                                        </div>
+    
+                                        <div class="col-md-3"></div>
+    
+                                    </div>
+    
+                                </div>
+    
+                                <div class="row mb-2">
+    
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-4 m-auto" style="width: auto;"><button type="submit" class="btn btn-primary mt-2" [disabled] = "!addAnnouncement.valid">Save</button></div>
+                                    <div class="col-md-4"></div>
+                                </div>
+    
+    
+                            </form>
+
+                    </div>
+                
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+
+        </div>
+
+    </div>
+    
+</div>
+
+
+  
+
+<form class="container" style="margin-top: 6%;">
+
+    <div style="border-radius : 2px;" class="container bg-light shadow-lg mt-4">
+
+        <div class="container-fluid">
+
+            <div class="row">
+        
+                <h5 style="width: auto;" class="m-auto mt-2 color:green">Available slots</h5>
+                
+            </div>
+            
+        </div>
+
+        <table class="table mt-2">
+            <tr class="tr">
+              <th class="th">Interviewer Name</th>
+              <th class="th">Skill Set</th>
+              <th class="th">Available Slot (Date)</th>
+              <th class="th">Available Slot (Time)</th>
+              
+            </tr>
+            <tr class="tr">
+              <td class="td">Alfreds Futterkiste</td>
+              <td class="td">Java</td>
+              <td class="td">12/04/2023</td>
+              <td class="td">12PM-6PM</td>
+            </tr>
+            <tr class="tr">
+                <td class="td">Rishabh</td>
+                <td class="td">Python</td>
+                <td class="td">13/04/2023</td>
+                <td class="td">11PM-3PM</td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+<div [ngStyle]="{'display': signal}" class="adjust">
+    <div class="alert success">
+        <strong>Announcement Added!</strong>
+    </div>
+</div>
+
+<div [ngStyle]="{'display': signal2}" class="adjust">
+    <div class="alert danger">
+        <strong>Announcement Deleted!</strong>
+    </div>
+</div>
+
+
+<div class="container">
+
+    <div class="row mt-4">
+
+        <table class="table shadow-lg">
+            
+            <thead class="bg-light mt-4">
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Start Date</th>
+
+                    <th>End Date</th>
+
+                    <th>Title</th>
+
+                    <th>Content</th>
+
+                    <th>Edit</th>
+
+                    <th>Delete</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr *ngFor="let announce of announcements">
+
+                    <td>{{announce.id}}</td>
+                    <td>{{announce.strtDate}}</td>
+                    <td>{{announce.edDate}}</td>
+                    <td>{{announce.title}}</td>
+                    <td>{{announce.content}}</td>
+                    <td><button class="btn btn-primary"><a style="text-decoration: none; color: white;" routerLink="/edit-announcement/{{ announce.id }}"><fa-icon [icon]="faEdit"></fa-icon></a></button></td>
+                    <td><button class="btn btn-danger" (click)="onDelete(announce.id)"><fa-icon [icon]="faTrash"></fa-icon></button></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

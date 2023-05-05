@@ -1,0 +1,80 @@
+<!-- admin = {{ admin }} -->
+<app-navbar></app-navbar>
+
+<div *ngFor="let annu of z" class="alert alert-warning alert-dismissible fade show shadow-lg" role="alert">
+    <strong>{{ annu.title }}</strong> ( {{ annu.content }} ) from {{ annu.strtDate }} to {{ annu.edDate }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="remove(annu.id)"></button>
+</div>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-4 mt-4">
+
+            <h4 class="text-muted text-center" style="font-size: 18px;">Welcome {{ first }} {{ last }}</h4>
+
+        </div>
+
+    </div>
+
+</div>
+
+<form class="container" style="margin-top: 10%;">
+
+    <div style="border-radius : 2px;" class="container bg-light shadow-lg mt-4">
+
+        <div class="container-fluid">
+
+            <div class="row">
+        
+                <h5 style="width: auto;" class="m-auto mt-2 color:green">Select slots for Interview</h5>
+                
+            </div>
+            
+        </div>
+    
+
+    <table class="table mt-2">
+        <tr class="tr">
+          <th class="th">Select Date</th>
+          <th class="th">Select Time</th>
+          
+        </tr>
+        <tr class="tr">
+          <td class="td">12/04/2023 <input type="radio" style="margin-left:20px ;">  </td>
+          <td class="td">11AM-3PM <input type="radio" style="margin-left:20px ;">  </td>
+        </tr>
+        <tr class="tr">
+            <td class="td">13/04/2023 <input type="radio" style="margin-left:20px ;">  </td>
+            <td class="td">3PM-6PM <input type="radio" style="margin-left:28px ;"></td>
+        </tr>
+    </table>  
+    <button class="btn btn-primary" style="margin-left:50%" (click)="Save()">Save</button>
+    </div>  
+</form> 
+
+<div class="chat-icon" (click)="showChat = true" [ngClass]="{'hidden': showChat}">
+    <i class="fa fa-comments"></i>
+  </div>
+  
+  <div class="chat-window" *ngIf="showChat">
+    <div class="chat-header">
+      <div class="chat-title">Chatbot</div>
+      <button class="close-btn" (click)="showChat = false">&times;</button>
+    </div>
+    <div class="chat-messages">
+      <div class="message" *ngFor="let message of messages">
+        <div class="message-bubble" [ngClass]="{'user': message.isSentByUser, 'bot': !message.isSentByUser}">
+          {{ message.content }}
+        </div>
+      </div>
+    </div>
+    <form (submit)="sendMessage()">
+      <input type="text" placeholder="Type your message..." [(ngModel)]="currentMessage" name="message">
+      <button type="submit">
+        <i *ngIf="!isSending" class="fa fa-paper-plane"></i>
+        <i *ngIf="isSending" class="fa fa-spinner fa-spin"></i>
+      </button>
+    </form>
+  </div>

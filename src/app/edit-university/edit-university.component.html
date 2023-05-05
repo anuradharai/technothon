@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+    <div class="row mt-5">
+
+        <form (ngSubmit)="onUpdateUniversity(UpdateForm)" #UpdateForm="ngForm">
+
+            <div style="border-radius: 2%;" class="container">
+
+                <div class="row mt-4">
+
+                    <div class="col-lg-6 m-auto shadow-lg">
+
+                        <div class="input-group mt-2">
+
+                            <label class="form-group">University</label>
+
+                            <input style="margin-left: 8.5%;" ngModel name="university" class="form-control" type="text" [(ngModel)]="model.university" required> 
+                            
+                        </div>
+
+                        <div class="input-group mt-2">
+
+                            <label class="form-group">Country Code</label>
+
+                            <input style="margin-left: 16.5%;" ngModel name="city" class="form-control" type="text" [(ngModel)]="model.countrycode" required>
+                            
+                        </div>
+
+                        <div class="input-group mt-2">
+
+                            <label class="form-group">Country</label>
+
+                            <input style="margin-left: 11%;" ngModel name="address" class="form-control" type="text" [(ngModel)]="model.country" required>
+                            
+                        </div>
+
+                        <div class="input-group mt-2">
+
+                            <label class="form-group">Website</label>
+ 
+                            <input style="margin-left: 15%;" ngModel name="state" class="form-control" type="text" [(ngModel)]="model.website" required>
+                            
+                        </div>
+
+                        <button style="margin-left: 40%;" class="btn btn-primary mt-2 mb-2" type="submit" [disabled]="!UpdateForm.form.valid"><a style="text-decoration: none; color: white;">Update</a></button>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div [ngStyle]="{'display': signal}" class="adjust">
+    <div class="alert success">
+        <strong>University Updated!</strong>
+    </div>
+</div>

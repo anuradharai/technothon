@@ -1,0 +1,179 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+
+    <div class="row mt-4">
+
+        <form [formGroup] = "Updateform" (ngSubmit) = "onSubmit()">
+
+            <div class="container-fluid col-lg-6 mx-auto mt-2 bg-white shadow-lg rounded" style="border: 1px beige solid; padding: 1%; border-radius: 1%;">
+
+                <div style="width: auto;" class="row">
+
+                  <div style="width: auto;" class="col-lg-4 m-auto">
+
+                    <img id="profileImage" style="width: 100px; height: 100px;" class="rounded-circle img-fluid shadow-lg" src="{{ imgUrl }}" alt="Add Image">
+
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <!-- <div class="col-lg-4 m-auto">
+
+                    <div class="input-group mt-4">
+
+                      <span class="input-group">Username</span>
+  
+                      <span class="input-group-text mt-2"><fa-icon [icon]="faUserTie"></fa-icon></span>
+      
+                      <input type="email" class="form-control mt-2" formControlName = "username" [readonly] = "true">
+      
+                    </div>
+
+                  </div> -->
+
+                  <div class="col-lg-4 m-auto">
+
+                    <div class="input-group mt-4">
+
+                      <span class="input-group">First Name</span>
+  
+                      <span style="border-radius: 180%;" class="input-group-text mt-2"><fa-icon [icon]="faUserTie"></fa-icon></span>
+      
+                      <input type="text" class="form-control mt-2 m-auto" formControlName = "fname">
+      
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-4 m-auto">
+
+                    <div class="input-group mt-4">
+
+                      <span class="input-group">Last Name</span>                
+      
+                      <span style="border-radius: 180%;" class="input-group-text mt-2"><fa-icon [icon] = "faUserTie"></fa-icon></span>
+      
+                      <input type="text" class="form-control mt-2" formControlName= "lname">
+      
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-4 m-auto">
+
+                    <div class="input-group mt-4">
+
+                      <span class="input-group">Gender</span>                
+      
+                      <span style="border: none; border-radius: 180%;" class="input-group-text mt-2"><fa-icon [icon] = "faUser"></fa-icon></span>
+      
+                      <input style="border: none;" type="text" class="form-control mt-2" formControlName= "gender" [readonly] = "true">
+      
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-lg-6 m-auto">
+
+                    <div class="input-group mt-4">
+
+                      <span class="input-group">Phone</span>
+      
+                      <span style="border: none; border-radius: 180%;" class="input-group-text mt-2"><fa-icon [icon] = "faPhone"></fa-icon></span>
+      
+                      <input type="text" class="form-control mt-2" formControlName= "number">
+      
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-6 m-auto">
+
+                    <div class="input-group mt-4">
+
+                      <span class="input-group">Email</span>
+      
+                      <span style="border: none; border-radius: 180%;" class="input-group-text mt-2"><fa-icon [icon]="faEnvelope"></fa-icon></span>
+      
+                      <input style="border: none;" type="email" class="form-control mt-2" formControlName = "email" [readonly]="true">                      
+      
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <!-- <div class="col-lg-6 m-auto">
+
+                    <div class="input-group mt-4">
+
+                      <span class="input-group">Gender</span>                
+      
+                      <span style="border: none; border-radius: 180%;" class="input-group-text mt-2"><fa-icon [icon] = "faUser"></fa-icon></span>
+      
+                      <input style="border: none;" type="text" class="form-control mt-2" formControlName= "gender" [readonly] = "true">
+      
+                    </div>
+
+                  </div> -->
+
+                  <div class="col-lg-12 mx-auto">
+
+                    <div class="input-group mt-4">
+
+                      <!-- <span class="input-group">Password</span>                
+      
+                      <span style="border: none; border-radius: 180%;" class="input-group-text mt-2"><fa-icon [icon]="faLock"></fa-icon></span>
+      
+                      <input type="text" class="form-control mt-2" formControlName="password"> -->
+
+                      <!-- <button style="width: auto;" class="input-group btn btn-danger mx-auto">Reset Password</button> -->
+      
+                    </div>
+
+                  </div>
+
+                </div>
+                
+            </div>
+
+            <div class="row mt-2">
+
+              <div style="width: auto;" class="col-lg-12 m-auto">
+
+                <div class="row">
+
+                  <div class="col-lg-4 m-auto">
+
+                    <button style="width: auto;" type="submit" class="btn btn-success mt-4">Update</button>
+  
+                  </div>
+  
+                  <div class="col-lg-8 m-auto">
+  
+                    <button style="width: auto;" class="input-group btn btn-danger mt-4"><a style="text-decoration: none; color: white;" routerLink="/resetPassword" href="#">Reset Password</a></button>
+  
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- <input type="file" formControlName = "image" style="display: none;"> -->
+
+        </form>
+
+    </div>
+
+</div>

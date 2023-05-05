@@ -1,0 +1,53 @@
+<div class="container">
+
+    <div class="row mt-5">
+
+        <div class="col-lg-4 bg-light m-auto">
+
+            <h2 class="text-center text-muted pt-3">Login</h2>
+
+            <p class="text-muted" style="font-size: 12px;"><span style="color: red;">*</span>Required Field</p>
+
+            <form [formGroup] = "Loginform" (ngSubmit) = "onSubmit()">
+
+                <div class="input-group mb-3">
+
+                    <span class="input-group-text"><fa-icon [icon] = "faEnvelope"></fa-icon><span style="color: red;">*</span></span>
+
+                    <input type="email" class="form-control" placeholder="Email" formControlName="email">
+
+                    <span class="input-group" style="font-size: 12px; color: red;" *ngIf = "email?.invalid && email?.touched">email id is required</span>
+
+
+                </div>
+
+                <div class="input-group mb-3">
+
+                    <span class="input-group-text"><fa-icon [icon] = "faLock"></fa-icon><span style="color: red;">*</span></span>
+
+                    <input type="password" class="form-control" placeholder="Password" formControlName="password">
+
+                    <span class="input-group" style="font-size: 12px; color: red;" *ngIf = "password?.invalid && password?.touched">password is required</span>
+
+
+                </div>
+
+                <div class="d-grid">
+
+                    <button type="submit" class="btn btn-success" [disabled] = "!Loginform.valid" >Login</button>
+
+                </div>
+                
+                <p class="text-center">
+
+                    Signup now <a routerLink="/signup" style="text-decoration: none;"> Signup here</a>
+                    
+                </p>
+                
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,326 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <h2 class="col-lg-4 m-auto mt-4" style="width:auto">Add Document</h2>
+
+    <form FormGroup="documentForm" (ngSubmit)="onSubmit()">
+
+      <div class="container-fluid">
+
+        <div class="row">
+
+          <div class="col-lg-6 m-auto bg-light shadow-lg mt-4 pb-4">
+
+            <div class="row mt-4">
+
+              <div class="col-lg-12">
+
+                <div class="dropZone">
+
+                  <input class="input-group" #fileDropRef id="fileDropRef" type="file" (change)="onChange($event)">
+
+                  <!-- <img src="src\app\document\1092216.png" alt=""> -->
+
+                  <h3>Drag and drop file here</h3>
+
+                  <h3>or</h3>
+
+                  <label for="fileDropRef">Browse for file</label>
+
+                </div>
+
+              </div>
+
+              <div style="width: auto;" class="col-lg-4 m-auto">
+
+                <button class="btn btn-primary mt-4" (click)="upload()">Upload</button>
+
+                <a routerLink="/pdfViewer" style="text-decoration: none; color: white; margin-left: 5rem;"><button class="btn btn-info mt-4">View Pdf</button></a>
+
+
+
+              </div>
+
+            </div>
+
+
+            <div *ngIf="show" class="row">
+
+              <div class="col-lg-12">
+
+                <div class="file">
+
+                  <div class="info">
+
+                    <table>
+
+                      <thead>
+
+                        <td>Name</td>
+                        <td>Size</td>
+                        <td>Progress</td>
+                        
+                      </thead>
+
+                      <tbody>
+
+                        <td><h4 class="name">{{ filename }}</h4></td>
+
+                        <td><p class="size">{{ formatBytes(filesize) }}</p></td>
+
+                        <td><app-progress [progress]="filesize"></app-progress></td>
+
+                      </tbody>
+
+                    </table>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      
+    </form>
+
+  </div> 
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- <div class="row mt-4">
+
+              <div class="col-lg-4">
+
+                <div class="input-group">
+
+                  <span class="input-group"><fa-icon style="width: 20px; height: 20px; color: rgb(255, 0, 0);" [icon]="faFile"></fa-icon>.pdf</span>
+
+                </div>
+
+              </div>
+
+              <div class="col-lg-4 m-auto">
+
+                <div class="input-group">
+
+                  <input class="input-group" type="file" (change)="onChange1($event)">
+
+                </div>
+
+              </div>
+
+              <div style="width: auto;" class="col-lg-4 m-auto">
+
+                <button class="btn btn-primary" (click)="upload1()">Upload</button>
+
+              </div>
+
+            </div> -->
+
+            <!-- <div class="row mt-4">
+
+              <div class="col-lg-4">
+
+                <div class="input-group">
+
+                  <span class="input-group"><fa-icon style="width: 20px; height: 20px; color: rgb(255, 0, 0);" [icon]="faFile"></fa-icon>.txt</span>
+
+                </div>
+
+              </div>
+
+              <div class="col-lg-4 m-auto">
+
+                <div class="input-group">
+
+                  <input class="input-group" type="file" (change)="onChange2($event)">
+
+                </div>
+
+              </div>
+
+              <div style="width: auto;" class="col-lg-4 m-auto">
+
+                <button class="btn btn-primary" (click)="upload2()">Upload</button>
+
+              </div>
+
+            </div>-->
+<!-- 
+          </div>
+
+        </div>
+
+      </div>  -->
+<!-- 
+      <button class="btn btn-primary" type="submit">Upload</button> -->
+
+    <!-- </form> -->
+
+
+    <!-- <ejs-pdfviewer id="pdfViewer" [serviceUrl]='service' [documentPath]= {{file}} style="height:640px;display:block"></ejs-pdfviewer> -->
+
+    <!-- <div class="row">
+
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4"><div><pdf-viewer [src]= file style="width: 10px; height: 10px;"></pdf-viewer></div></div>
+      
+    </div> -->
+
+    <!-- <div class="row mt-4">
+
+      <h2 class="col-lg-12 m-auto mt-4" style="width: auto;">Document</h2>
+
+
+    </div> -->
+    <!-- <div class="container-fluid mb-4">
+
+      <div class="row mt-4">
+
+        <div class="col-lg-6 m-auto bg-ligth shadow-lg">
+
+          <table class="table"> -->
+
+            <!-- <thead>
+
+              <th style="width: auto;">Documents</th>
+
+            </thead> -->
+
+            <!-- <tbody>
+
+              <tr>
+
+                <td>Image</td>
+
+                <td><img class="img-thumbnail" style="width:100px; height:100px; margin-left: 25%;" src={{userImage}} alt="img"></td>
+                
+                <td><a><fa-icon style="color: red; font-size : larger; margin-left: 25%;" (click)="delImage()" [icon]="faDelete"></fa-icon></a></td>
+
+              </tr>
+
+              <tr>
+
+                <td>PDF</td>
+
+                <td><a style="text-decoration: none; margin-left: 25%;" href="#">Preview PDF</a></td>
+
+                <td><a><fa-icon style="color:red; font-size: larger; margin-left: 25%;" (click)="delPDF()" [icon]="faDelete"></fa-icon></a></td>
+
+                <div id="error-container" *ngIf="Alert" class="alert alert-danger" role="alert">
+                  PDF Deleted <fa-icon (click)="refresh()" style="margin-left: 40%;" [icon]="faTime"></fa-icon>
+                </div>
+
+              </tr>
+
+
+              <tr>
+
+                <td>Text File</td>
+
+                <td><a style="text-decoration: none; margin-left: 25%;" href="#" routerLink="/fileViewer">Preview Text File</a></td>
+
+                <td><a><fa-icon style="color: red; font-size: larger; margin-left: 25%;" (click)="delText()" [icon]="faDelete"></fa-icon></a></td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+
+        </div>
+
+
+      </div>
+
+    </div> -->
+
+    <!-- <object data=userFile type="text"></object> -->
+
+    <!-- <p><iframe [src]= safeSrc frameborder="0" height="100px" width="100px"></iframe></p> -->
+
+    <!-- <pre> {{ userFile }}</pre> -->
+
+    <!-- {{ documents }} -->
+
+    <!-- <pdf-viewer [src]= file style="width: 10px; height: 10px;"></pdf-viewer> -->
+
+    
+    
+
+    
+
+  <!-- </div>
+
+</div> -->
